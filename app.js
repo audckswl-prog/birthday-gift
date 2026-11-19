@@ -97,7 +97,7 @@ const SETS = [
     hasCoffee: true,
     extraItem: "spray",
     tag: "✨ 달콤한 라떼 + 식후 상쾌한 마우스 스프레이",
-    popularBadge: "🔥 인기 1위 꿀조합",
+    popularBadge: "호불호 0%",
   },
   {
     num: 3,
@@ -106,7 +106,7 @@ const SETS = [
     hasCoffee: false,
     fixedItems: ["lipbalm", "spray"],
     tag: "🌿 가방 속 필수 에티켓 2종! 커피 안 마시는 분께 딱",
-    popularBadge: "호불호 0%",
+    popularBadge: "🔥 인기 1위 꿀조합",
   },
   {
     num: 4,
