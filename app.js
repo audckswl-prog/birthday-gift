@@ -762,29 +762,4 @@ document.addEventListener("DOMContentLoaded", () => {
     await copyTextToClipboard(msg);
     showToast("✅ 카톡 주문 문구가 복사되었어요! 카톡방에 붙여넣기 해주세요 💬");
   });
-
-  // 모바일 네이티브 공유
-  document.getElementById("share-native-btn").addEventListener("click", async () => {
-    const msg = buildKakaoMessage();
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: "10초 컷 생일선물 자판기 🎁",
-          text: msg,
-        });
-      } catch {
-        // 취소 시 무시
-      }
-    } else {
-      await copyTextToClipboard(msg);
-      showToast("✅ 메시지가 복사되었어요! 카카오톡 채팅방에 붙여넣어 주세요.");
-    }
-  });
-
-  // 링크 저장/복사하기
-  document.getElementById("bookmark-link-btn").addEventListener("click", async () => {
-    const url = window.location.href;
-    await copyTextToClipboard(url);
-    showToast("📌 자판기 주소가 복사되었어요! 내 카톡에 저장해두고 다음 생일에 써보세요.");
-  });
 });
