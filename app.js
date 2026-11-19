@@ -271,10 +271,10 @@ function renderSets() {
     let stageHTML = "";
     if (setObj.hasCoffee) {
       stageHTML = `
-        <div class="stage-docent-caption">🖼️ ${comp.coffee.artwork}</div>
+        <div class="stage-docent-caption">${comp.coffee.artwork}</div>
         <div class="stage-item">
           <img src="${comp.coffee.image}" alt="${comp.coffee.name}" id="stage-coffee-img-${setObj.num}" />
-          <span class="stage-item-label">🎨 ${comp.coffee.name} (15포)</span>
+          <span class="stage-item-label">${comp.coffee.name} (15포)</span>
         </div>
       `;
       if (comp.extra) {
@@ -282,7 +282,7 @@ function renderSets() {
           <div class="stage-plus">+</div>
           <div class="stage-item">
             <img src="${comp.extra.image}" alt="${comp.extra.name}" />
-            <span class="stage-item-label">✨ ${comp.extra.name}</span>
+            <span class="stage-item-label">${comp.extra.name}</span>
           </div>
         `;
       }
@@ -294,7 +294,7 @@ function renderSets() {
           ${idx > 0 ? '<div class="stage-plus">+</div>' : ""}
           <div class="stage-item">
             <img src="${item.image}" alt="${item.name}" />
-            <span class="stage-item-label">✨ ${item.name}</span>
+            <span class="stage-item-label">${item.name}</span>
           </div>
         `
         )
@@ -329,8 +329,8 @@ function renderSets() {
       flavorSwitcherHTML = `
         <div class="flavor-switcher">
           <div class="flavor-switcher-header">
-            <span class="flavor-switcher-title">🔄 커피 종류 변경 (클릭해서 바꿔보세요!)</span>
-            <span class="flavor-tap-hint">🖼️ ${comp.coffee.artwork}</span>
+            <span class="flavor-switcher-title">커피 종류 변경 (클릭해서 바꿔보세요!)</span>
+            <span class="flavor-tap-hint">${comp.coffee.artwork}</span>
           </div>
           <div class="flavor-chips">
             ${flavorButtons}
