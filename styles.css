@@ -1,0 +1,1416 @@
+/* ==========================================================================
+   ATELIER DE GIFT — SEOUL AESTHETIC CAFE & GALLERY SPACE DESIGN
+   ========================================================================== */
+
+:root,
+html[data-theme="atelier"] {
+  --bg-space: #efeae1;
+  --bg-card: #f8f5ef;
+  --bg-elevated: #f2ede3;
+  --bg-stage: #ffffff;
+  --ink-primary: #1e1b18;
+  --ink-secondary: #5c554c;
+  --ink-muted: #8c8377;
+  --accent-main: #8f4326;       /* Terracotta / Burnt Sienna */
+  --accent-soft: rgba(143, 67, 38, 0.1);
+  --accent-gold: #9a7b4f;
+  --line-fine: rgba(30, 27, 24, 0.15);
+  --line-strong: rgba(30, 27, 24, 0.42);
+  --dock-bg: rgba(26, 23, 20, 0.94);
+  --dock-text: #f4EFE6;
+  --dock-accent: #e5c384;
+  --ambient-1: rgba(255, 243, 224, 0.65);
+  --ambient-2: rgba(212, 185, 150, 0.25);
+}
+
+html[data-theme="botanical"] {
+  --bg-space: #e7ece6;
+  --bg-card: #f3f6f2;
+  --bg-elevated: #ebf0ea;
+  --bg-stage: #ffffff;
+  --ink-primary: #16221a;
+  --ink-secondary: #49594e;
+  --ink-muted: #76877b;
+  --accent-main: #2d5a3f;       /* Deep Jeju Matcha / Moss */
+  --accent-soft: rgba(45, 90, 63, 0.11);
+  --accent-gold: #5e7853;
+  --line-fine: rgba(22, 34, 26, 0.15);
+  --line-strong: rgba(22, 34, 26, 0.42);
+  --dock-bg: rgba(20, 32, 24, 0.94);
+  --dock-text: #eef3ee;
+  --dock-accent: #b7d7b8;
+  --ambient-1: rgba(235, 250, 235, 0.6);
+  --ambient-2: rgba(160, 195, 168, 0.25);
+}
+
+html[data-theme="midnight"] {
+  --bg-space: #161514;
+  --bg-card: #201e1c;
+  --bg-elevated: #292623;
+  --bg-stage: #ffffff;          /* Lit museum vitrine for seamless product photos */
+  --ink-primary: #eee8dc;
+  --ink-secondary: #b5ada0;
+  --ink-muted: #80786c;
+  --accent-main: #d9a760;       /* Warm Vinyl Amber / Brass */
+  --accent-soft: rgba(217, 167, 96, 0.14);
+  --accent-gold: #d9a760;
+  --line-fine: rgba(238, 232, 220, 0.14);
+  --line-strong: rgba(238, 232, 220, 0.42);
+  --dock-bg: rgba(238, 232, 220, 0.95);
+  --dock-text: #161514;
+  --dock-accent: #8f4326;
+  --ambient-1: rgba(217, 167, 96, 0.12);
+  --ambient-2: rgba(143, 67, 38, 0.12);
+}
+
+:root {
+  --font-serif-en: "Gowun Batang", "Pretendard Variable", Pretendard, Georgia, serif;
+  --font-serif-ko: "Gowun Batang", "Pretendard Variable", Pretendard, serif;
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
+  --kakao-yellow: #fee500;
+  --kakao-brown: #191600;
+  --kakao-chat-bg: #b8c9d9;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-space);
+  color: var(--ink-primary);
+  line-height: 1.6;
+  padding-bottom: 132px;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  position: relative;
+}
+
+/* 창가 자연광 & 미세 코튼 페이퍼 질감 오버레이 */
+.ambient-light {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 18% 8%, var(--ambient-1) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 28%, var(--ambient-2) 0%, transparent 60%),
+    linear-gradient(125deg, transparent 35%, rgba(255, 255, 255, 0.12) 48%, transparent 60%);
+}
+
+.paper-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* 상단 아틀리에 바 & 무드 스위처 */
+.top-atelier-bar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg-space);
+  border-bottom: 1px solid var(--line-fine);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  backdrop-filter: blur(10px);
+  transition: background-color 0.4s ease;
+}
+
+.atelier-brand {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink-primary);
+}
+
+.mood-switcher {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg-elevated);
+  padding: 3px;
+  border-radius: 999px;
+  border: 1px solid var(--line-fine);
+}
+
+.mood-btn {
+  border: none;
+  background: transparent;
+  color: var(--ink-muted);
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 4px 9px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mood-btn.active {
+  background: var(--ink-primary);
+  color: var(--bg-card);
+}
+
+.app-container {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px 18px 40px;
+}
+
+/* ==========================================================================
+   히어로 섹션 (감성카페 테이스팅 메뉴북 커버)
+   ========================================================================== */
+.hero {
+  text-align: center;
+  padding: 28px 16px 26px;
+  margin-bottom: 24px;
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  position: relative;
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--line-fine);
+}
+
+.hero::before { top: 3px; }
+.hero::after { bottom: 3px; }
+
+.hero-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.ornament-line {
+  width: 32px;
+  height: 1px;
+  background: var(--accent-main);
+  opacity: 0.6;
+}
+
+.ornament-text {
+  font-family: var(--font-serif-en);
+  font-style: italic;
+  font-size: 0.96rem;
+  letter-spacing: 0.06em;
+  color: var(--accent-main);
+}
+
+.hero-title {
+  font-family: var(--font-serif-ko);
+  font-size: 1.56rem;
+  font-weight: 700;
+  line-height: 1.48;
+  letter-spacing: -0.02em;
+  color: var(--ink-primary);
+  margin-bottom: 14px;
+}
+
+.hero-title em {
+  font-style: normal;
+  color: var(--accent-main);
+  border-bottom: 1px solid var(--accent-main);
+  padding-bottom: 2px;
+}
+
+.hero-desc {
+  font-size: 0.84rem;
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: 22px;
+  font-weight: 400;
+}
+
+.hero-desc strong {
+  color: var(--ink-primary);
+  font-weight: 600;
+}
+
+/* 테이블 오더링 노트 (I. TASTING / II. TRANSFER) */
+.ordering-note {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 14px;
+  text-align: left;
+  background: var(--bg-card);
+  border: 1px solid var(--line-fine);
+  padding: 15px 16px;
+}
+
+.note-roman {
+  display: block;
+  font-family: var(--font-serif-ko);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--accent-main);
+  margin-bottom: 4px;
+}
+
+.note-col p {
+  font-size: 0.74rem;
+  color: var(--ink-secondary);
+  line-height: 1.48;
+}
+
+.note-divider {
+  width: 1px;
+  background: var(--line-fine);
+}
+
+@media (max-width: 440px) {
+  .ordering-note {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .note-divider {
+    width: 100%;
+    height: 1px;
+  }
+}
+
+/* ==========================================================================
+   메인 네비게이션 탭 (미니멀 갤러리 인덱스 탭)
+   ========================================================================== */
+.main-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-bottom: 1px solid var(--line-fine);
+  margin-bottom: 24px;
+}
+
+.main-tab {
+  border: none;
+  background: transparent;
+  padding: 12px 8px 14px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  position: relative;
+  color: var(--ink-muted);
+  transition: color 0.25s ease;
+}
+
+.main-tab::after {
+  content: "";
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  bottom: -1px;
+  height: 2px;
+  background: var(--ink-primary);
+  transform: scaleX(0);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.main-tab.active {
+  color: var(--ink-primary);
+}
+
+.main-tab.active::after {
+  transform: scaleX(1);
+}
+
+.tab-en {
+  font-family: var(--font-serif-en);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.tab-ko {
+  font-family: var(--font-serif-ko);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+  animation: gentleReveal 0.35s ease;
+}
+
+@keyframes gentleReveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   시그니처 페어링 코스 카드 (아치형 갤러리 니치 + 테이스팅 노트 티켓)
+   ========================================================================== */
+.sets-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.set-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-fine);
+  padding: 24px 20px 22px;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 14px 36px rgba(15, 12, 8, 0.03);
+}
+
+/* 네 모서리 아틀리에 프레임 장식선 */
+.set-card::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid var(--line-fine);
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+.set-card.selected {
+  border-color: var(--ink-primary);
+  box-shadow: 0 18px 40px rgba(15, 12, 8, 0.09);
+}
+
+.set-card.selected::before {
+  border-color: var(--accent-main);
+  opacity: 0.85;
+}
+
+/* 상단 코스 번호 & 큐레이션 헤더 */
+.set-card-top-bar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line-fine);
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+
+.course-index {
+  font-family: var(--font-serif-ko);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--accent-main);
+}
+
+.course-mood-tag {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+}
+
+.set-title-area {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.set-title-area h3 {
+  font-family: var(--font-serif-ko);
+  font-size: 1.24rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 5px;
+}
+
+.set-curate-desc {
+  font-size: 0.8rem;
+  color: var(--ink-secondary);
+  font-weight: 400;
+}
+
+/* 아치형 갤러리 알코브 스테이지 (화이트 배경으로 제품 이미지와 100% 일체화) */
+.arch-stage-wrap {
+  padding: 0 8px;
+  margin-bottom: 16px;
+}
+
+.product-stage {
+  background: var(--bg-stage);
+  border: 1px solid rgba(30, 27, 24, 0.12);
+  border-radius: 130px 130px 12px 12px;
+  padding: 36px 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-height: 236px;
+  position: relative;
+  box-shadow: inset 0 0 0 5px var(--bg-card), inset 0 0 0 6px rgba(30, 27, 24, 0.07);
+}
+
+.stage-docent-caption {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-serif-en);
+  font-style: italic;
+  font-size: 0.78rem;
+  color: #5c554c;
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+}
+
+.stage-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.stage-item img {
+  height: 156px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stage-item img.pop-anim {
+  animation: gallerySwap 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes gallerySwap {
+  0% { opacity: 0.35; transform: scale(0.92) translateY(4px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.stage-item-label {
+  font-size: 0.71rem;
+  font-weight: 500;
+  color: #4a443c;
+  letter-spacing: -0.01em;
+  border-bottom: 1px solid rgba(30, 27, 24, 0.18);
+  padding-bottom: 1px;
+}
+
+.stage-plus {
+  font-family: var(--font-serif-en);
+  font-style: italic;
+  color: #8c8377;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+/* 도슨트 & 테이스팅 노트 바 */
+.tasting-plaque {
+  text-align: center;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--line-fine);
+  border-bottom: 1px solid var(--line-fine);
+  padding: 9px 12px;
+  margin-bottom: 14px;
+  font-size: 0.75rem;
+  color: var(--ink-secondary);
+}
+
+.tasting-plaque strong {
+  font-family: var(--font-serif-ko);
+  color: var(--ink-primary);
+  font-weight: 700;
+}
+
+/* 테이스팅 팔레트 (라떼 맛 선택기 - 조향/스페셜티 카페 스타일) */
+.flavor-switcher {
+  margin-bottom: 18px;
+}
+
+.flavor-switcher-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 9px;
+}
+
+.flavor-switcher-title {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink-primary);
+}
+
+.flavor-tap-hint {
+  font-size: 0.7rem;
+  color: var(--accent-main);
+  font-weight: 500;
+}
+
+.flavor-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.flavor-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 11px;
+  background: transparent;
+  border: 1px solid var(--line-fine);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.flavor-btn:hover {
+  border-color: var(--ink-primary);
+  color: var(--ink-primary);
+}
+
+.flavor-btn.active {
+  background: var(--ink-primary);
+  border-color: var(--ink-primary);
+  color: var(--bg-card);
+  font-weight: 600;
+}
+
+.flavor-swatch {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4);
+}
+
+.flavor-diff {
+  font-family: var(--font-serif-en);
+  font-size: 0.74rem;
+  opacity: 0.75;
+}
+
+/* 카드 하단 가격 & 티켓 발권 버튼 */
+.set-card-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-fine);
+}
+
+.price-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-label-en {
+  font-family: var(--font-serif-en);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--ink-muted);
+}
+
+.price-main-row {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+
+.set-price {
+  font-family: var(--font-serif-ko);
+  font-size: 1.48rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.set-price.price-bump {
+  animation: priceBump 0.32s ease;
+}
+
+@keyframes priceBump {
+  0% { transform: translateY(0); }
+  45% { transform: translateY(-3px); color: var(--accent-main); }
+  100% { transform: translateY(0); }
+}
+
+.ship-included-tag {
+  font-size: 0.68rem;
+  color: var(--accent-main);
+  font-weight: 600;
+}
+
+.price-breakdown {
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  margin-top: 3px;
+}
+
+.select-set-btn {
+  background: var(--ink-primary);
+  color: var(--bg-card);
+  border: 1px solid var(--ink-primary);
+  padding: 12px 16px;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.set-card.selected .select-set-btn {
+  background: var(--accent-main);
+  border-color: var(--accent-main);
+  color: #ffffff;
+}
+
+.select-set-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   [탭 2] 단품 테이스팅 박스 조립
+   ========================================================================== */
+.section-kicker,
+.catalog-kicker {
+  display: block;
+  font-family: var(--font-serif-en);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--accent-main);
+  margin-bottom: 4px;
+}
+
+.custom-intro-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-fine);
+  padding: 20px;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.custom-intro-card h2 {
+  font-family: var(--font-serif-ko);
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+}
+
+.custom-intro-card p {
+  font-size: 0.8rem;
+  color: var(--ink-secondary);
+}
+
+.catalog-section {
+  background: var(--bg-card);
+  border: 1px solid var(--line-fine);
+  padding: 22px 18px;
+  margin-bottom: 20px;
+}
+
+.catalog-header {
+  text-align: center;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line-fine);
+}
+
+.catalog-header h3 {
+  font-family: var(--font-serif-ko);
+  font-size: 1.08rem;
+  margin-bottom: 2px;
+}
+
+.catalog-sub {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+}
+
+.custom-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(134px, 1fr));
+  gap: 12px;
+}
+
+.custom-item-card {
+  border: 1px solid var(--line-fine);
+  padding: 14px 10px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--bg-stage);
+  color: #1e1b18;
+  transition: all 0.2s ease;
+}
+
+.custom-item-card.in-cart {
+  border: 1.5px solid var(--accent-main);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.custom-item-img-wrap {
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.custom-item-img-wrap img {
+  max-height: 105px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.custom-item-art {
+  font-family: var(--font-serif-en);
+  font-style: italic;
+  font-size: 0.71rem;
+  color: #787065;
+  margin-bottom: 2px;
+  white-space: nowrap;
+}
+
+.custom-item-name {
+  font-family: var(--font-serif-ko);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #1e1b18;
+  margin-bottom: 3px;
+}
+
+.custom-item-price {
+  font-family: var(--font-serif-en);
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--accent-main);
+  margin-bottom: 10px;
+}
+
+.qty-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(30, 27, 24, 0.22);
+  background: #f8f5ef;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: #1e1b18;
+}
+
+.qty-btn.plus {
+  background: #1e1b18;
+  color: #ffffff;
+  border-color: #1e1b18;
+}
+
+.qty-val {
+  font-family: var(--font-serif-en);
+  font-size: 0.95rem;
+  font-weight: 700;
+  min-width: 16px;
+}
+
+/* ==========================================================================
+   CURATOR'S NOTE (Why Section)
+   ========================================================================== */
+.why-section {
+  margin-top: 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-fine);
+  padding: 26px 20px;
+}
+
+.why-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.why-section h3 {
+  font-family: var(--font-serif-ko);
+  font-size: 1.12rem;
+}
+
+.why-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.why-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line-fine);
+}
+
+.why-card:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.why-num {
+  font-family: var(--font-serif-en);
+  font-style: italic;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-main);
+  min-width: 22px;
+}
+
+.why-card strong {
+  display: block;
+  font-family: var(--font-serif-ko);
+  font-size: 0.88rem;
+  margin-bottom: 3px;
+  color: var(--ink-primary);
+}
+
+.why-card p {
+  font-size: 0.78rem;
+  color: var(--ink-secondary);
+  line-height: 1.55;
+}
+
+.atelier-footer {
+  text-align: center;
+  padding: 28px 0 8px;
+  font-family: var(--font-serif-en);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--ink-muted);
+}
+
+/* ==========================================================================
+   하단 플로팅 컨시어지 바
+   ========================================================================== */
+.floating-bar {
+  position: fixed;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  background: var(--dock-bg);
+  color: var(--dock-text);
+  backdrop-filter: blur(14px);
+  padding: 13px 18px;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: 572px;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 18px 40px rgba(10, 8, 6, 0.28);
+}
+
+.floating-info {
+  cursor: pointer;
+  flex: 1;
+  min-width: 0;
+}
+
+.floating-top-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1px;
+}
+
+.floating-badge {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--dock-accent);
+}
+
+.floating-ship {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.floating-title {
+  font-family: var(--font-serif-ko);
+  font-size: 0.84rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.floating-price {
+  font-family: var(--font-serif-en);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.floating-cta-btn {
+  background: var(--kakao-yellow);
+  color: var(--kakao-brown);
+  border: none;
+  padding: 12px 16px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.floating-cta-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   기프트 티켓 발권 바텀 시트 (전시회 티켓 / 아틀리에 영수증 컨셉)
+   ========================================================================== */
+.sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 13, 11, 0.62);
+  backdrop-filter: blur(3px);
+  z-index: 100;
+}
+
+.order-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  color: var(--ink-primary);
+  border-top: 2px solid var(--ink-primary);
+  z-index: 101;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 -16px 48px rgba(0, 0, 0, 0.28);
+  animation: slideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.hidden {
+  display: none !important;
+}
+
+.sheet-handle-bar {
+  padding: 10px 0 4px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.sheet-handle {
+  width: 40px;
+  height: 3px;
+  background: var(--line-strong);
+}
+
+.sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 20px 14px;
+  border-bottom: 1px solid var(--line-fine);
+}
+
+.sheet-kicker {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--accent-main);
+}
+
+.sheet-title {
+  font-family: var(--font-serif-ko);
+  font-size: 1.12rem;
+  font-weight: 700;
+}
+
+.sheet-close-btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--line-fine);
+  background: transparent;
+  color: var(--ink-secondary);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.sheet-body {
+  padding: 16px 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* 모드 스위치 */
+.mode-switch-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--line-strong);
+}
+
+.mode-btn {
+  border: none;
+  background: transparent;
+  padding: 9px 8px;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  cursor: pointer;
+}
+
+.mode-btn.active {
+  background: var(--ink-primary);
+  color: var(--bg-card);
+}
+
+.mode-helper-text {
+  font-size: 0.76rem;
+  color: var(--ink-secondary);
+}
+
+/* 절취선 티켓 영수증 박스 */
+.ticket-receipt {
+  position: relative;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line-strong);
+  padding: 14px 16px;
+}
+
+.ticket-notch {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  transform: translateY(-50%);
+}
+
+.ticket-notch.left {
+  left: -7px;
+  clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+}
+
+.ticket-notch.right {
+  right: -7px;
+  clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+}
+
+.sheet-selected-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sheet-sel-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sheet-quick-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding-top: 9px;
+  border-top: 1px dashed var(--line-fine);
+}
+
+.sheet-pill-btn {
+  border: 1px solid var(--line-fine);
+  background: var(--bg-card);
+  color: var(--ink-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.71rem;
+  font-weight: 500;
+  padding: 4px 9px;
+  cursor: pointer;
+}
+
+.sheet-pill-btn.active {
+  background: var(--ink-primary);
+  color: var(--bg-card);
+  border-color: var(--ink-primary);
+}
+
+.sheet-sel-thumbs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sheet-sel-thumbs img {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+  background: #fff;
+  padding: 3px;
+  border: 1px solid rgba(30, 27, 24, 0.12);
+}
+
+.sheet-sel-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.sheet-sel-badge {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--accent-main);
+}
+
+.sheet-sel-name {
+  font-family: var(--font-serif-ko);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.sheet-sel-price {
+  font-family: var(--font-serif-en);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+/* 만년필 언더라인 감성 입력란 */
+.recipient-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-label-row label,
+.input-sub-label {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink-primary);
+}
+
+.sample-fill-btn {
+  border: 1px solid var(--line-fine);
+  background: transparent;
+  color: var(--accent-main);
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 9px;
+  cursor: pointer;
+}
+
+.recipient-input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--line-strong);
+  background: transparent;
+  padding: 8px 4px;
+  font-family: var(--font-serif-ko);
+  font-size: 0.92rem;
+  color: var(--ink-primary);
+  outline: none;
+}
+
+.recipient-input:focus {
+  border-bottom-color: var(--accent-main);
+}
+
+/* 카카오톡 채팅방 말풍선 프리뷰 */
+.kakao-preview-box {
+  border: 1px solid var(--line-fine);
+}
+
+.kakao-preview-header {
+  background: var(--bg-elevated);
+  color: var(--ink-secondary);
+  padding: 7px 12px;
+  font-family: var(--font-serif-en);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line-fine);
+}
+
+.live-indicator {
+  color: var(--accent-main);
+}
+
+.kakao-chat-room {
+  background: var(--kakao-chat-bg);
+  padding: 14px;
+}
+
+.kakao-bubble-wrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.kakao-bubble {
+  background: var(--kakao-yellow);
+  color: var(--kakao-brown);
+  padding: 12px 14px;
+  border-radius: 12px 2px 12px 12px;
+  font-size: 0.81rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  max-width: 92%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* 사용법 리마인더 */
+.sheet-steps-remind {
+  background: var(--bg-elevated);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid var(--line-fine);
+}
+
+.remind-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: var(--ink-secondary);
+}
+
+.remind-badge {
+  font-family: var(--font-serif-en);
+  font-weight: 700;
+  font-size: 0.68rem;
+  color: var(--accent-main);
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+}
+
+/* 시트 푸터 액션 */
+.sheet-footer {
+  padding: 12px 20px calc(16px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line-fine);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--bg-card);
+}
+
+.primary-kakao-btn {
+  width: 100%;
+  background: var(--kakao-yellow);
+  color: var(--kakao-brown);
+  border: 1px solid #1e1b18;
+  padding: 14px;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.secondary-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.secondary-btn {
+  border: 1px solid var(--line-fine);
+  background: transparent;
+  color: var(--ink-secondary);
+  padding: 10px 8px;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* 토스트 알림 */
+.toast {
+  position: fixed;
+  bottom: 102px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ink-primary);
+  color: var(--bg-card);
+  padding: 11px 18px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  z-index: 200;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+}
