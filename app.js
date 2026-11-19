@@ -363,7 +363,7 @@ function renderSets() {
           <div class="price-block">
             <div class="price-main-row">
               <span class="set-price" id="set-price-${setObj.num}">${formatKRW(comp.totalPrice)}</span>
-              <span class="ship-included-tag">🚚 배송비 포함</span>
+              <span class="ship-included-tag">배송비 포함</span>
             </div>
             <span class="price-breakdown" id="set-breakdown-${setObj.num}">${comp.breakdown}</span>
           </div>
