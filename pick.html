@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="botanical">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>10초 컷 센스 생일선물 자판기 🎁</title>
+  <meta name="description" content="카카오 선물하기에서 뭐 고를지 고민될 때! 예산에 딱 맞는 명화 홈카페 & 실속 선물 조합을 10초 만에 골라보세요." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="10초 컷 센스 생일선물 자판기 🎁" />
+  <meta property="og:description" content="카카오에선 못 찾는, 실용적이고 맛있는 선물 5가지 중에 골라보세요." />
+  <meta property="og:image" content="https://audckswl-prog.github.io/birthday-gift/assets/og-cover.jpg?v=3" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="675" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="10초 컷 센스 생일선물 자판기 🎁" />
+  <meta name="twitter:description" content="카카오에선 못 찾는, 실용적이고 맛있는 선물 5가지 중에 골라보세요." />
+  <meta name="twitter:image" content="https://audckswl-prog.github.io/birthday-gift/assets/og-cover.jpg?v=3" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- 필름 그레인 & 창가 자연광 오버레이 (서울 감성카페 공간감 연출) -->
+  <div class="ambient-light" aria-hidden="true"></div>
+  <div class="paper-grain" aria-hidden="true"></div>
+
+  <div class="app-container">
+    <!-- 에디토리얼 히어로 (감성카페 디자인 + 원래 워딩) -->
+    <header class="hero">
+      <div class="hero-ornament">
+        <span class="ornament-line"></span>
+        <span class="ornament-text">KAKAO GIFT CURATION</span>
+        <span class="ornament-line"></span>
+      </div>
+
+      <h1 class="hero-title">
+        카톡 선물하기 고르기 귀찮을 때,<br />
+        <em>10초 컷 생일선물 자판기</em> 🎁
+      </h1>
+
+      <p class="hero-desc">
+        어차피 쓸 1~2만 원대 생일선물, 수천 개 중에 고민하지 마세요!<br />
+        카카오에선 못 찾는, <strong>실용적이고 맛있는 선물 5가지</strong> 중에 골라보세요
+      </p>
+
+      <!-- 2단계 사용법 요약 카드 -->
+      <div class="ordering-note">
+        <div class="note-col">
+          <span class="note-roman">STEP 1. 세트 &amp; 커피 맛 고르기</span>
+          <p>받으실 분 이름과 함께 카톡으로 몇 번인지 전송!</p>
+        </div>
+        <div class="note-divider"></div>
+        <div class="note-col">
+          <span class="note-roman">STEP 2. 카카오 송금하기</span>
+          <p>계산된 금액만 카톡 송금하면 배송까지 알아서 끝!</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- 미니멀 언더라인 탭 네비게이션 -->
+    <nav class="main-tabs" role="tablist">
+      <button class="main-tab active" data-tab="sets" role="tab">
+        <span class="tab-en">01 / CURATED SETS</span>
+        <span class="tab-ko">🎁 추천 세트 (1~5번)</span>
+      </button>
+      <button class="main-tab" data-tab="custom" role="tab">
+        <span class="tab-en">02 / CUSTOM MIX</span>
+        <span class="tab-ko">🧩 단품·내맘대로 조합</span>
+      </button>
+    </nav>
+
+    <!-- [탭 1] 추천 세트 1~5번 쇼룸 -->
+    <section id="tab-sets" class="tab-panel active">
+      <div id="sets-grid" class="sets-grid"></div>
+    </section>
+
+    <!-- [탭 2] 단품 메뉴판 & 내 맘대로 조합 계산기 -->
+    <section id="tab-custom" class="tab-panel">
+      <div class="custom-intro-card">
+        <span class="section-kicker">CUSTOM MIX &amp; MATCH</span>
+        <h2>🧩 단품 메뉴판 &amp; 내 맘대로 조립하기</h2>
+        <p>단품 가격을 확인하고 원하는 아이템을 골라 담으면 배송비 포함 금액을 자동으로 계산해 드려요.</p>
+      </div>
+
+      <div class="catalog-section">
+        <div class="catalog-header">
+          <span class="catalog-kicker">ARTWORK HOME CAFE</span>
+          <h3>🎨 까페드다몬 명화 라떼 &amp; 쵸코 (15개입 1박스)</h3>
+          <span class="catalog-sub">선물 포장 없이도 고급스러운 명화 에디션</span>
+        </div>
+        <div id="custom-coffee-grid" class="custom-items-grid"></div>
+      </div>
+
+      <div class="catalog-section">
+        <div class="catalog-header">
+          <span class="catalog-kicker">DAILY ESSENTIALS</span>
+          <h3>✨ 호불호 0% 데일리 케어 필수템</h3>
+          <span class="catalog-sub">가방에 쏙 넣어 다니며 매일 쓰는 실용성 갑 아이템</span>
+        </div>
+        <div id="custom-care-grid" class="custom-items-grid"></div>
+      </div>
+    </section>
+
+    <!-- 왜 카카오 선물하기 대신 이게 좋을까요? 섹션 -->
+    <section class="why-section">
+      <div class="why-header">
+        <span class="section-kicker">WHY THIS GIFT?</span>
+        <h3>🤔 왜 카톡 선물하기 기프티콘보다 반응이 좋을까요?</h3>
+      </div>
+      <div class="why-cards">
+        <div class="why-card">
+          <div class="why-num">01</div>
+          <div>
+            <strong>뜯자마자 감탄하는 명화 패키지</strong>
+            <p>고흐, 모네, 드가의 명화가 그려진 까페드다몬 박스는 별도 포장 없이도 고급스러운 선물 느낌을 줍니다.</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-num">02</div>
+          <div>
+            <strong>스벅 커피 2잔 값으로 15잔의 여유</strong>
+            <p>한 번 마시고 끝나는 아메리카노 쿠폰 대신, 사무실이나 집에서 15번 즐길 수 있는 프리미엄 라떼입니다.</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-num">03</div>
+          <div>
+            <strong>고민 시간 0초! 번호만 말하면 끝</strong>
+            <p>수천 개 상품 스크롤할 필요 없이 예산에 맞춰 1~5번만 고르고 카카오 송금하면 알아서 보내드립니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="atelier-footer">
+      <span>BIRTHDAY GIFT CURATION · SEOUL</span>
+    </footer>
+  </div>
+
+  <!-- 하단 플로팅 바 -->
+  <div id="floating-bar" class="floating-bar">
+    <div class="floating-info" id="floating-info-trigger">
+      <div class="floating-top-row">
+        <span class="floating-badge" id="floating-badge">2번 세트 선택됨</span>
+        <span class="floating-ship">배송비 포함</span>
+      </div>
+      <div class="floating-title" id="floating-title">바닐라 라떼 + 마우스 스프레이</div>
+      <div class="floating-price" id="floating-price">17,000원</div>
+    </div>
+    <button id="open-sheet-btn" class="floating-cta-btn">
+      <span>카톡 주문서 체험/전송</span>
+      <span class="cta-arrow">⟶</span>
+    </button>
+  </div>
+
+  <!-- 바텀 시트 모달: 미리 경험해보기 & 원클릭 카톡 주문서 -->
+  <div id="order-sheet-backdrop" class="sheet-backdrop hidden"></div>
+  <aside id="order-sheet" class="order-sheet hidden" aria-label="카톡 주문서 및 미리 체험하기">
+    <div class="sheet-handle-bar" id="sheet-close-handle">
+      <div class="sheet-handle"></div>
+    </div>
+
+    <div class="sheet-header">
+      <div>
+        <span class="sheet-kicker">10초 컷 선물 자판기</span>
+        <h2 class="sheet-title">카톡 전송 미리보기 &amp; 주문서 💬</h2>
+      </div>
+      <button id="sheet-close-btn" class="sheet-close-btn" aria-label="닫기">✕</button>
+    </div>
+
+    <div class="sheet-body">
+      <!-- 모드 선택: 실제 선물 신청 vs 미리 체험(내 원픽 골라보기) -->
+      <div class="mode-switch-wrap">
+        <button class="mode-btn active" data-mode="gift" id="mode-gift-btn">
+          🎁 지인 생일선물 보내기
+        </button>
+        <button class="mode-btn" data-mode="preview" id="mode-preview-btn">
+          👀 미리 체험 · 내 원픽 찜하기
+        </button>
+      </div>
+
+      <p class="mode-helper-text" id="mode-helper-text">
+        받으실 분 이름을 적으면 카톡으로 보낼 주문 문구가 자동으로 완성돼요! (연습 삼아 눌러보셔도 됩니다 😄)
+      </p>
+
+      <!-- 절취선 티켓 디자인 + 현재 선택된 세트/옵션 요약 및 빠른 변경 -->
+      <div class="ticket-receipt">
+        <div class="ticket-notch left"></div>
+        <div class="ticket-notch right"></div>
+        <div class="sheet-selected-card" id="sheet-selected-card"></div>
+      </div>
+
+      <!-- 받는 사람 이름 입력 영역 -->
+      <div class="recipient-input-group" id="recipient-group">
+        <div class="input-label-row">
+          <label for="recipient-name" id="recipient-label">🎂 선물 받으실 분 이름</label>
+          <button type="button" class="sample-fill-btn" id="sample-name-btn">✨ 예시 이름 넣어보기</button>
+        </div>
+        <input
+          type="text"
+          id="recipient-name"
+          class="recipient-input"
+          placeholder="예: 김민수 (비워두셔도 전송 가능해요)"
+          maxlength="30"
+        />
+      </div>
+
+      <!-- 추가 한 줄 메모 (선택) -->
+      <div class="recipient-input-group">
+        <label for="order-memo" class="input-sub-label">📝 추가 요청사항 (선택)</label>
+        <input
+          type="text"
+          id="order-memo"
+          class="recipient-input memo-input"
+          placeholder="예: 이번 주 금요일이 생일이에요 / 내 원픽은 말차!"
+          maxlength="60"
+        />
+      </div>
+
+      <!-- 카카오톡 말풍선 실시간 프리뷰 -->
+      <div class="kakao-preview-box">
+        <div class="kakao-preview-header">
+          <span>💛 카카오톡 전송 메시지 미리보기</span>
+          <span class="live-indicator">실시간 자동완성</span>
+        </div>
+        <div class="kakao-chat-room">
+          <div class="kakao-bubble-wrap">
+            <div class="kakao-bubble" id="kakao-message-preview"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 사용법 2단계 리마인더 -->
+      <div class="sheet-steps-remind">
+        <div class="remind-item">
+          <span class="remind-badge">STEP 1</span>
+          <span>아래 버튼을 눌러 <strong>주문 문구를 복사해 카톡으로 전송</strong>한다</span>
+        </div>
+        <div class="remind-item">
+          <span class="remind-badge">STEP 2</span>
+          <span>카톡 채팅방에서 <strong>카카오 송금하기</strong>를 하면 완료!</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sheet-footer">
+      <button id="copy-kakao-btn" class="primary-kakao-btn">
+        <span>💬</span>
+        <span id="copy-btn-text">주문 문구 복사하고 카톡에 붙여넣기</span>
+      </button>
+      <div class="secondary-actions">
+        <button id="share-native-btn" class="secondary-btn">
+          📤 카카오톡으로 바로 공유/전송
+        </button>
+        <button id="bookmark-link-btn" class="secondary-btn">
+          📌 다음 생일 때 쓰게 이 링크 복사해두기
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 복사 완료 토스트 알림 -->
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
